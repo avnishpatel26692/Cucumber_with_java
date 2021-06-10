@@ -100,7 +100,6 @@ public class SampleSteps {
     @Then("^I see a message: \"([^\"]*)\"$")
     public void i_see_a_message(String arg1) throws Throwable {
         WebElement message = driver.findElement(By.id("ch1_error"));
-        //String expectedValue = arg1;
         String realValue = message.getText();
         Assert.assertEquals(arg1, realValue);
     }
