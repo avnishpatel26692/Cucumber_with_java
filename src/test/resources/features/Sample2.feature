@@ -9,7 +9,7 @@ Feature: This is a feature to test Age Page functionality
     And User clicks on submit button
     Then User see message "Hello, ABC, you are an adult"
 
-  @scenario2
+  @scenario2 @Regression
   Scenario: Check Age page functionality for Kid
     When user navigates to Age Page
     And User enter name "ABC"
