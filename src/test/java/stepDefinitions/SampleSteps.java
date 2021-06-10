@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en_scouse.An;
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +47,37 @@ public class SampleSteps {
     @And("^I should see menu$")
     public void iShouldSeeMenu() throws Throwable {
         assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
+    }
+
+    @When("^user navigates to Age Page$")
+    public void user_navigates_to_Age_Page() throws Throwable {
+       driver.get("https://kristinek.github.io/site/examples/age");
+    }
+
+    @When("^user enter name :\"([^\"]*)\"$")
+    public void user_enter_name(String arg1) throws Throwable {
+       WebElement nameTextBox = driver.findElement(By.id("name"));
+       nameTextBox.clear();
+       nameTextBox.sendKeys(arg1);
+    }
+
+    @When("^user enter age; (\\d+)$")
+    public void user_enter_age(int arg1) throws Throwable {
+        WebElement ageTextBox = driver.findElement(By.name("age"));
+        ageTextBox.sendKeys("" + arg1);
+    }
+
+    @When("^user clicks on submit button$")
+    public void user_clicks_on_submit_button() throws Throwable {
+    WebElement submitButton = driver.findElement(By.xpath("//*[@id='submit']"));
+    submitButton.click();
+    }
+
+    @Then("^User see message \"([^\"]*)\"$")
+    public void user_see_message(String arg1) throws Throwable {
+        WebElement msg = driver.findElement(By.id("message"));
+        String actualMessage = msg.getText();
+        Assert.assertEquals(arg1, actualMessage);
     }
 }
 
