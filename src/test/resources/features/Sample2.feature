@@ -1,6 +1,6 @@
 Feature: This is a feature to test Age Page functionality
 
-  @scenario1
+  @Sample2
   Scenario: Check Age page functionality for Adult
     When user navigates to Age Page
     And User enter name "ABC"

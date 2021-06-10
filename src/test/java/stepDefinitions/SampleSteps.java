@@ -27,40 +27,46 @@ public class SampleSteps {
         this.driver = Hooks.driver;
     }
 
-    @When("^I am on the home page$")
-    public void i_am_on_the_home_page() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Given("^I am on the home page$")
+    public void iAmOnTheHomePage() throws Throwable {
+        driver.get("https://kristinek.github.io/site");
     }
 
     @Then("^I should see home page header$")
-    public void i_should_see_home_page_header() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void iShouldSeeHomePageHeader() throws Throwable {
+        assertEquals("This is a home page",
+                driver.findElement(By.cssSelector("h1")).getText());
     }
 
-    @Then("^I should see home page description$")
-    public void i_should_see_home_page_description() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^I should see home page description$")
+    public void iShouldSeeHomePageDescription() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                driver.findElement(By.cssSelector("p")).getText());
     }
 
-    @Then("^I should see menu$")
-    public void i_should_see_menu() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^I should see menu$")
+    public void iShouldSeeMenu() throws Throwable {
+        assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
     }
+
+
+
+
+
+
+
+
+
 
     @When("^user navigates to Age Page$")
-    public void user_navigates_to_Age_Page() throws Throwable {
+    public void user_navigates_to_Age_page() throws Throwable {
         driver.get("https://kristinek.github.io/site/examples/age.html");
     }
 
     @When("^User enter name \"([^\"]*)\"$")
     public void user_enter_name(String arg1) throws Throwable {
-        WebElement nameTextbox = driver.findElement(By.id("name"));
-        nameTextbox.clear();
-        nameTextbox.sendKeys(arg1);
+        WebElement name = driver.findElement(By.id("name"));
+        name.sendKeys(arg1);
     }
 
     @When("^User enter age (\\d+)$")
@@ -71,16 +77,52 @@ public class SampleSteps {
 
     @When("^User clicks on submit button$")
     public void user_clicks_on_submit_button() throws Throwable {
-        WebElement submitBtn = driver.findElement(By.xpath("//button[text()='Submit']"));
-        submitBtn.click();
+        WebElement button = driver.findElement(By.id("submit"));
+        button.click();
     }
 
     @Then("^User see message \"([^\"]*)\"$")
     public void user_see_message(String arg1) throws Throwable {
-        WebElement msg = driver.findElement(By.id("message"));
-        String atcualMessage = msg.getText();
-        Assert.assertEquals(arg1,atcualMessage );
+        WebElement message = driver.findElement(By.id("message"));
+        Assert.assertEquals(arg1,message.getText());
+    }
+
+
+
+
+
+
+
+
+
+
+    @Given("^I am on number page$")
+    public void i_am_on_number_page() throws Throwable {
+        driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
+    }
+
+    @When("^I enter number: \"([^\"]*)\"$")
+    public void i_enter_number(String arg1) throws Throwable {
+        WebElement number = driver.findElement(By.id("numb"));
+        number.sendKeys(arg1);
+    }
+
+    @When("^I click submit number$")
+    public void i_click_submit_number() throws Throwable {
+        WebElement button = driver.findElement(By.xpath("//button[text()='Submit']"));
+        button.click();
+    }
+
+    @Then("^I see a message: \"([^\"]*)\"$")
+    public void i_see_a_message(String arg1) throws Throwable {
+        WebElement message = driver.findElement(By.id("ch1_error"));
+        Assert.assertEquals(arg1,message.getText());
+    }
+
+    @Then("^I see a new message: \"([^\"]*)\"$")
+    public void i_see_a_new_message(String arg1) throws Throwable {
+        Alert alert = driver.switchTo().alert();
+        Assert.assertEquals(arg1,alert.getText());
+        alert.accept();
     }
 }
-
-
