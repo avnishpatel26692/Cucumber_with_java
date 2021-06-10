@@ -38,7 +38,9 @@ public class SampleSteps {
     @And("^I should see menu$")
     public void iShouldSeeMenu() throws Throwable {
         assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
+
     }
+
     @When("^user navigates to Age Page$")
     public void user_navigates_to_Age_Page() throws Throwable {
         driver.get("https://kristinek.github.io/site/examples/age.html");
@@ -69,10 +71,47 @@ public class SampleSteps {
         String atcualMessage = msg.getText();
         Assert.assertEquals(arg1,atcualMessage );
     }
+
+
+    @Given("^I am on number page$")
+    public void i_am_on_number_page() throws Throwable {
+        driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
+    }
+
+    @When("^I enter number: \"([^\"]*)\"$")
+    public void i_enter_number(int arg1) throws Throwable {
+        WebElement numberTextbox = driver.findElement(By.id("numb"));
+        //numberTextbox.clear();
+        numberTextbox.sendKeys(""+arg1);
+    }
+
+    @When("^I click submit number$")
+    public void i_click_submit_number() throws Throwable {
+        WebElement submitButton = driver.findElement(By.xpath("//button[text()='Submit']"));
+        submitButton.click();
+    }
+
+    @Then("^I see a message: \"([^\"]*)\"$")
+    public void i_see_a_message(String arg1) throws Throwable {
+        WebElement msg = driver.findElement(By.id("message"));
+        String actualMessage = msg.getText();
+        Assert.assertEquals(arg1,actualMessage );
+    }
+
+    @Then("^I see a new message: \"([^\"]*)\"$")
+    public void i_see_a_new_message(String arg1) throws Throwable {
+        // Switching to Alert
+        Alert alert = driver.switchTo().alert();
+
+
+        // Capturing alert message.
+        String alertMessage= driver.switchTo().alert().getText();
+        Assert.assertEquals(arg1,alertMessage );
+
+        alert.accept();
+    }
+
+
 }
-
-
-
-
 
 
