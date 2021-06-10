@@ -45,7 +45,7 @@ public class SampleSteps {
 
     @And("^I should see menu$")
     public void iShouldSeeMenu() throws Throwable {
-        assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("//ul[contains(@class, 'w3-navbar')]")).isDisplayed());
     }
 }
 
