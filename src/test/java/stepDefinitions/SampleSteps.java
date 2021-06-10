@@ -78,6 +78,37 @@ public class SampleSteps {
         String atcualMessage = msg.getText();
         Assert.assertEquals(arg1,atcualMessage );
     }
+    @Given("^I am on number page$")
+    public void i_am_on_number_page() throws Throwable {
+        driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
+    }
+    @When("^I enter number: \"([^\"]*)\"$")
+    public void i_enter_number(String arg1) throws Throwable {
+        WebElement numberTextbox = driver.findElement(By.id("numb"));
+        numberTextbox.sendKeys(arg1);
+    }
+    @When("^I click submit number$")
+    public void i_click_submit_number() throws Throwable {
+            WebElement submitBtn = driver.findElement(By.className("w3-orange"));
+            submitBtn.click();}
+    @Then("^I see a message: \"([^\"]*)\"$")
+    public void i_see_a_message(String arg1) throws Throwable {
+        WebElement Errormsg = driver.findElement(By.id("ch1_error"));
+        String atcualMessage = Errormsg.getText();
+        Assert.assertEquals(arg1, atcualMessage);
+    }
+    @Then("^I see a new message: \"([^\"]*)\"$")
+    public void i_see_a_new_message(String arg1) throws Throwable {
+        Alert alert = driver.switchTo().alert();
+        String alertMsg =driver.switchTo().alert().getText();
+        Assert.assertEquals(arg1,alertMsg );
+
+
+    }
+
+
+
+
 }
 
 
