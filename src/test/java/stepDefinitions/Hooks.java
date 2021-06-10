@@ -15,9 +15,15 @@ public class Hooks {
     public static WebDriver driver;
     static String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
 
+    //For Mac users
+    //static String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
+
     @Before
     public void openBrowser() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+
+        //For Mac users
+        //System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
     }
