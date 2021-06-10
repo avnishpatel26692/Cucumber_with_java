@@ -54,17 +54,17 @@ public class SampleSteps {
        driver.get("https://kristinek.github.io/site/examples/age");
     }
 
-    @When("^user enter name :\"([^\"]*)\"$")
+    @When("^User enter name \"([^\"]*)\"$")
     public void user_enter_name(String arg1) throws Throwable {
-       WebElement nameTextBox = driver.findElement(By.id("name"));
-       nameTextBox.clear();
-       nameTextBox.sendKeys(arg1);
+        WebElement nameTextbox = driver.findElement(By.id("name"));
+        nameTextbox.clear();
+        nameTextbox.sendKeys(arg1);
     }
 
-    @When("^user enter age; (\\d+)$")
-    public void user_enter_age(int arg1) throws Throwable {
-        WebElement ageTextBox = driver.findElement(By.name("age"));
-        ageTextBox.sendKeys("" + arg1);
+    @When("^User enter age (\\d+)$")
+    public void user_enter_age(int arg1) {
+        WebElement ageText = driver.findElement(By.name("age"));
+        ageText.sendKeys(""+arg1);
     }
 
     @When("^user clicks on submit button$")
