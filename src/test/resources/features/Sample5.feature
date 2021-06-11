@@ -22,3 +22,11 @@ Feature: Two Column Data Table
     |  ABC  |   29    |Hello, ABC, you are an adult  |
     | Iva   |   16    |Hello, Iva, you are a teenager|
     | Jack  |   5     |Hello, Jack, you are a kid    |
+
+   @Scenario3
+   Scenario: 3 or more Column Data table example
+     Given I have the following order
+     | vegetable  |quantity |cost |Availability |
+     | cucumber   |    4    | 10  |yes          |
+     | carrot     |    5    |  6  |no           |
+     | potato     |    6    |  4  |yes          |

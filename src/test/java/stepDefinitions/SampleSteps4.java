@@ -58,4 +58,17 @@ public class SampleSteps4 {
             textbox.sendKeys(value);
         }
     }
+    @Given("^I have the following order$")
+    public void i_have_the_following_order(DataTable arg1) throws Throwable {
+        for(Map<String, String> map : arg1.asMaps(String.class, String.class)){
+            String vegetableName = map.get("vegetable");
+            String quantity = map.get("quantity");
+            String cost = map.get("cost");
+            String availability = map.get("Availability");
+            System.out.println("Vegetable: " + vegetableName);
+            System.out.println("Quantity: " + quantity);
+            System.out.println("cost: " + cost);
+            System.out.println(("Availability: " + availability));
+        }
+    }
 }
