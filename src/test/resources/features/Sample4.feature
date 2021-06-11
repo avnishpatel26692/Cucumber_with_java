@@ -1,5 +1,7 @@
 Feature: Data Table Examples
 
+  //ja ir 1 kolonna, , tad step difinition izmanto List<>
+
   Background:
     Given user navigates to Action Page
 
