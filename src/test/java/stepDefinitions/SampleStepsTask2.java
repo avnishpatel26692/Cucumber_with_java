@@ -52,7 +52,6 @@ public class SampleStepsTask2 {
         WebElement dateOfBirthInputField = driver.findElement(By.id("dob"));
         dateOfBirthInputField.clear();
         dateOfBirthInputField.sendKeys(arg4);
-
         WebElement checkBoxEnglish = driver.findElement(By.xpath("//input[@id='english']"));
         WebElement checkBoxFrench = driver.findElement(By.xpath("//input[@id='french']"));
         WebElement checkBoxSpanish = driver.findElement(By.xpath("//input[@id='spanish']"));
@@ -106,7 +105,18 @@ public class SampleStepsTask2 {
         WebElement dateOfBirthInputField = driver.findElement(By.id("dob"));
         dateOfBirthInputField.clear();
         dateOfBirthInputField.sendKeys(arg4);
-
+        WebElement checkBoxEnglish = driver.findElement(By.xpath("//input[@id='english']"));
+        WebElement checkBoxFrench = driver.findElement(By.xpath("//input[@id='french']"));
+        WebElement checkBoxSpanish = driver.findElement(By.xpath("//input[@id='spanish']"));
+        List<WebElement> checkBoxes = new ArrayList<>();
+        checkBoxes.add(checkBoxEnglish);
+        checkBoxes.add(checkBoxFrench);
+        checkBoxes.add(checkBoxSpanish);
+        for (WebElement nextCheckBox : checkBoxes) {
+            if (nextCheckBox.isSelected()) {
+                nextCheckBox.click();
+            }
+        }
         String xPath = "//input[@id='" + arg5 + "']";
         WebElement checkBox = driver.findElement(By.xpath(xPath));
         if (!checkBox.isSelected()) {
