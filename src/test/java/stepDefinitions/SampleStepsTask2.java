@@ -19,7 +19,6 @@ public class SampleStepsTask2 {
         this.driver = Hooks.driver;
     }
 
-
     @Given("^I am on Employee page$")
     public void i_am_on_Employee_page() throws Throwable {
         driver.get("https://kristinek.github.io/site/tasks/list_of_people");
@@ -78,7 +77,6 @@ public class SampleStepsTask2 {
         editBtnP.click();
     }
 
-    //
     @When("^edit something: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
     public void edit_something(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String
             arg7) throws Throwable {
@@ -162,8 +160,10 @@ public class SampleStepsTask2 {
                 Assert.assertFalse(checkbox.isSelected());
         }
 
-        WebElement genderBtn = driver.findElement(By.xpath("//input[@type='radio']"));
-        Assert.assertFalse(genderBtn.isSelected());
+        List<WebElement> genderBtn = driver.findElements(By.xpath("//input[@type='radio']"));
+        for (WebElement radioBtn: genderBtn) {
+            Assert.assertFalse(radioBtn.isSelected());
+        }
 
         WebElement employeeStatusDropDown = driver.findElement(By.id("status"));
         Select dropdown = new Select(employeeStatusDropDown);
