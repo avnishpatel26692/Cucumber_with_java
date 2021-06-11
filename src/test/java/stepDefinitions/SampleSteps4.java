@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -58,7 +59,23 @@ public class SampleSteps4 {
             textbox.clear();
             textbox.sendKeys(value);
         }
+    }
 
+    @Given("^I have the following order$")
+    public void i_have_the_following_order(DataTable arg1) throws Throwable {
+        for(Map<String, String> map : arg1.asMaps(String.class, String.class))
+        {
+            String vegetableName =  map.get("vegetable"); //cucumber
+            String quantity = map.get("quantity"); // 4
+            String cost = map.get("cost"); //10
+            String availability = map.get("Availability"); // yes
+            System.out.println("========================");
+            System.out.println("Vegetable: "  + vegetableName);
+            System.out.println("Quantity: "  + quantity);
+            System.out.println("Cost: "  + cost);
+            System.out.println("Availability: "  + availability);
+            System.out.println("========================");
+        }
     }
 
 }
