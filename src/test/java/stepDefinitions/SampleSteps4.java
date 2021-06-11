@@ -52,8 +52,8 @@ public class SampleSteps4 {
     public void user_enters_details(Map<String, String> arg1) throws Throwable {
         for(Map.Entry<String, String> txtbox: arg1.entrySet())
         {
-            String key = txtbox.getKey(); //name
-            String value = txtbox.getValue(); //ABC
+            String key = txtbox.getKey(); //1st time : name, 2nd time :age
+            String value = txtbox.getValue(); //1st time: ABC, 2nd time "5"
             WebElement textbox = driver.findElement(By.id(key));
             textbox.clear();
             textbox.sendKeys(value);
