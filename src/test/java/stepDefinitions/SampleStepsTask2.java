@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,18 +41,36 @@ public class SampleStepsTask2 {
     @When("^fill all fields: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
     public void fill_all_fields(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) throws Throwable {
         WebElement nameInputField = driver.findElement(By.id("name"));
+        nameInputField.clear();
         nameInputField.sendKeys(arg1);
         WebElement surnameInputField = driver.findElement(By.id("surname"));
+        surnameInputField.clear();
         surnameInputField.sendKeys(arg2);
         WebElement jobInputField = driver.findElement(By.id("job"));
+        jobInputField.clear();
         jobInputField.sendKeys(arg3);
         WebElement dateOfBirthInputField = driver.findElement(By.id("dob"));
+        dateOfBirthInputField.clear();
         dateOfBirthInputField.sendKeys(arg4);
+
+        WebElement checkBoxEnglish = driver.findElement(By.xpath("//input[@id='english']"));
+        WebElement checkBoxFrench = driver.findElement(By.xpath("//input[@id='french']"));
+        WebElement checkBoxSpanish = driver.findElement(By.xpath("//input[@id='spanish']"));
+        List<WebElement> checkBoxes = new ArrayList<>();
+        checkBoxes.add(checkBoxEnglish);
+        checkBoxes.add(checkBoxFrench);
+        checkBoxes.add(checkBoxSpanish);
+        for (WebElement nextCheckBox : checkBoxes) {
+            if (nextCheckBox.isSelected()) {
+                nextCheckBox.click();
+            }
+        }
         String xPath = "//input[@id='" + arg5 + "']";
         WebElement checkBox = driver.findElement(By.xpath(xPath));
         if (!checkBox.isSelected()) {
             checkBox.click();
         }
+
         xPath = "//input[@id='" + arg6 + "']";
         WebElement radioButton = driver.findElement(By.xpath(xPath));
         radioButton.click();
@@ -76,13 +95,18 @@ public class SampleStepsTask2 {
     @When("^edit something: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
     public void edit_something(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) throws Throwable {
         WebElement nameInputField = driver.findElement(By.id("name"));
+        nameInputField.clear();
         nameInputField.sendKeys(arg1);
         WebElement surnameInputField = driver.findElement(By.id("surname"));
+        surnameInputField.clear();
         surnameInputField.sendKeys(arg2);
         WebElement jobInputField = driver.findElement(By.id("job"));
+        jobInputField.clear();
         jobInputField.sendKeys(arg3);
         WebElement dateOfBirthInputField = driver.findElement(By.id("dob"));
+        dateOfBirthInputField.clear();
         dateOfBirthInputField.sendKeys(arg4);
+
         String xPath = "//input[@id='" + arg5 + "']";
         WebElement checkBox = driver.findElement(By.xpath(xPath));
         if (!checkBox.isSelected()) {
