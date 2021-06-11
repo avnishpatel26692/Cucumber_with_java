@@ -1,9 +1,12 @@
 @Feature1
 Feature: This is a feature to test Age Page functionality
 
+  //Background izmanto, ja ir kādas darbības, kas visos testos ir vienādas
+  Background:
+    When user navigates to Age Page
+
   @Scenario1
   Scenario: check Age page functionality for Adult
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 40
     And User clicks on Submit button
@@ -11,7 +14,6 @@ Feature: This is a feature to test Age Page functionality
 
   @Scenario2 @Regression
   Scenario: check Age page functionality for Kid
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 5
     And User clicks on Submit button
@@ -19,7 +21,6 @@ Feature: This is a feature to test Age Page functionality
 
   @Scenario1 @Regression
   Scenario: check Age page functionality for Kid
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 16
     And User clicks on Submit button

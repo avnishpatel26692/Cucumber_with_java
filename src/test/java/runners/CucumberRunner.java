@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Task1.feature",
+        features = "src/test/resources/features/Sample5.feature",
         plugin = {"pretty", "html:cucumber-report/html-report",
                 "junit:cucumber-report/junit-report.xml",
                 "json:cucumber-report/json-report.json"},
@@ -18,7 +18,9 @@ import org.junit.runner.RunWith;
 //        tags = {"@Working"}, //
 //        tags = {"@NotWorking"},
 //        tags = {"@Working, @NotWorking"},
-        tags = {"@Feature"},
+//        tags = {"@Feature"},
+        //        tags = {"@Feature"},
+
         dryRun = false,
         glue = {"stepDefinitions"}
 )
