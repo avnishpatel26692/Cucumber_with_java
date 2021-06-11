@@ -4,6 +4,7 @@ import PageObjects.AgePO;
 import PageObjects.AgeSubmittedPO;
 import com.gargoylesoftware.htmlunit.Page;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,7 +25,7 @@ public class SampleStepsUsingPO {
 
     public SampleStepsUsingPO() {
         this.driver = Hooks.driver;
-        agePageObject = PageFactory.initElements(driver,AgePO.class );
+        agePageObject = PageFactory.initElements(driver, AgePO.class);
         ageSubmittedPageObject = PageFactory.initElements(driver, AgeSubmittedPO.class);
     }
 
@@ -40,7 +41,7 @@ public class SampleStepsUsingPO {
 
     @When("^I enter age: (\\d+) using PO$")
     public void i_enter_age_using_PO(int arg1) throws Throwable {
-        agePageObject.setAge(""+arg1);
+        agePageObject.setAge("" + arg1);
     }
 
     @When("^I click submit age using PO$")
@@ -53,7 +54,4 @@ public class SampleStepsUsingPO {
         String actualMessage = ageSubmittedPageObject.getMsg();
         Assert.assertEquals(arg1, actualMessage);
     }
-
-
-
 }
