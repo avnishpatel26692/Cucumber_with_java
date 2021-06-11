@@ -110,6 +110,32 @@ public class SampleSteps {
         Assert.assertEquals(arg1,alert.getText());
         alert.dismiss();
     }
+
+    @Given("^User navigates to Actions page$")
+    public void user_navigates_to_Actions_page() throws Throwable {
+        driver.get("https://kristinek.github.io/site/examples/actions");
+    }
+
+    @When("^User clicks on$")
+    public void user_clicks_on(List<String> arg1) throws Throwable {
+        for(String e : arg1){
+            WebElement checkbox = driver.findElement(By.xpath("//input[@value='"+e+"']"));
+            checkbox.click();
+        }
+    }
+
+    @When("^User clicks result button$")
+    public void user_clicks_result_button() throws Throwable {
+        WebElement button  = driver.findElement(By.id("result_button_checkbox"));
+        button.click();
+    }
+
+    @Then("^User see result message \"([^\"]*)\"$")
+    public void user_see_result_message(String arg1) throws Throwable {
+        WebElement msg = driver.findElement(By.id("result_checkbox"));
+        Assert.assertEquals(arg1,msg.getText());
+    }
+
 }
 
 
