@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class SampleSteps4 {
@@ -45,6 +46,19 @@ public class SampleSteps4 {
         WebElement msg = driver.findElement(By.id("result_checkbox"));
         String actualMsg = msg.getText();
         Assert.assertEquals(arg1,actualMsg );
+    }
+
+    @When("^user enters details$")
+    public void user_enters_details(Map<String, String> arg1) throws Throwable {
+        for(Map.Entry<String, String> txtbox: arg1.entrySet())
+        {
+            String key = txtbox.getKey(); //name
+            String value = txtbox.getValue(); //ABC
+            WebElement textbox = driver.findElement(By.id(key));
+            textbox.clear();
+            textbox.sendKeys(value);
+        }
+
     }
 
 }
