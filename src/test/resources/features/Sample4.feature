@@ -1,8 +1,10 @@
 Feature: Data Table Examples
 
+  Background:
+    Given user navigates to action page
+
   @Scenario1
   Scenario: Check 2 checkbxes
-    Given user navigates to action page
     When user clicks on checkboxes
     |Option 1|
     |Option 2|
@@ -11,7 +13,6 @@ Feature: Data Table Examples
 
     @Scenario2
   Scenario: Check 3 checkbxes
-    Given user navigates to action page
     When user clicks on checkboxes
       |Option 1|
       |Option 2|
