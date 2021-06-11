@@ -136,6 +136,14 @@ public class SampleSteps {
         Assert.assertEquals(arg1,msg.getText());
     }
 
+    @When("^User enter name and age$")
+    public void user_enter_name_and_age(Map<String,String> arg1) throws Throwable {
+        for(Map.Entry<String,String> e : arg1.entrySet()){
+            WebElement field = driver.findElement(By.id(e.getKey()));
+            field.clear();
+            field.sendKeys(e.getValue());
+        }
+    }
 }
 
 
