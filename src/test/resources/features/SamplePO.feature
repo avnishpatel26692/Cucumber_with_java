@@ -1,16 +1,20 @@
-@Feature1
-Feature: Check Age page functionality
+@regression
+Feature: Introduction to cucumber part 2
+  As a test engineer
+  I want to be able to write and execute a scenario with parameters
 
-  @SamplePO.1
-  Scenario Outline: Check Age page functionality
-    When User navigates to Age page using PO
-    And User enter name and age using PO
-      |name|<name>|
-      |age |<age>  |
-    And User clicks on submit button using PO
-    Then User see message using PO "<message>"
-    Examples:
-      |name|age|message|
-      |ABC |5  |Hello, ABC, you are a kid|
-      |ABC |16 |Hello, ABC, you are a teenager|
-      |ABC |40 |Hello, ABC, you are an adult  |
+  @Scenario1
+  Scenario: a new scenario 1 with regex
+    Given I am on age page using PO
+    When I enter name: "Ann" using PO
+    And I enter age: 5 using PO
+    And I click submit age using PO
+    Then I see message: "Hello, Ann, you are a kid" using PO
+
+  @Scenario2
+  Scenario: a new scenario 2 with regex
+    Given I am on age page using PO
+    When I enter name: "Bob" using PO
+    And I enter age: 61 using PO
+    And I click submit age using PO
+    Then I see message: "Hello, Bob, you are an adult" using PO
