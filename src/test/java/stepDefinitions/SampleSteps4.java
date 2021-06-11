@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import cucumber.api.DataTable;
 
 import java.util.List;
 import java.util.Map;
@@ -27,8 +28,7 @@ public class SampleSteps4 {
 
     @When("^user clicks on checkboxes$")
     public void user_clicks_on_checkboxes(List<String> arg1) throws Throwable {
-        for(String checkBoxValue : arg1)
-        {
+        for (String checkBoxValue : arg1) {
             String checkboxXpath = "//input[@value='" + checkBoxValue + "']";
             WebElement checkbox = driver.findElement(By.xpath(checkboxXpath));
             checkbox.click();
@@ -45,19 +45,35 @@ public class SampleSteps4 {
     public void message_should_be_displayed(String arg1) throws Throwable {
         WebElement msg = driver.findElement(By.id("result_checkbox"));
         String actualMsg = msg.getText();
-        Assert.assertEquals(arg1,actualMsg );
+        Assert.assertEquals(arg1, actualMsg);
     }
+
     @When("^user enters details$")
     public void user_enters_details(Map<String, String> arg1) throws Throwable {
-        for(Map.Entry<String, String> txtbox: arg1.entrySet())
-        {
+        for (Map.Entry<String, String> txtbox : arg1.entrySet()) {
             String key = txtbox.getKey(); //1st time : name 2nd time : age
             String value = txtbox.getValue(); //1st time: Abc 2nd time 5
             WebElement textbox = driver.findElement(By.id(key));
             textbox.clear();
             textbox.sendKeys(value);
         }
+
     }
 
-}
-
+    @Given("^I have the following order$")
+    public void i_have_the_following_order(DataTable arg1) throws Throwable {
+        for(Map<String, String> map : arg1.asMaps(String.class, String.class))
+        {
+            String vegetableName =  map.get("vegetable"); //cucumber
+            String quantity = map.get("quantity"); // 4
+            String cost = map.get("cost"); //10
+            String availability = map.get("Availability"); // yes
+            System.out.println("========================");
+            System.out.println("Vegetable: "  + vegetableName);
+            System.out.println("Quantity: "  + quantity);
+            System.out.println("Cost: "  + cost);
+            System.out.println("Availability: "  + availability);
+            System.out.println("========================");
+        }
+    }
+    }
