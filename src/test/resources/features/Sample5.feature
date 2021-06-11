@@ -23,3 +23,4 @@ Feature: Check Age page functionality
     |ABC |5  |Hello, ABC, you are a kid|
     |ABC |16 |Hello, ABC, you are a teenager|
     |ABC |40 |Hello, ABC, you are an adult  |
+

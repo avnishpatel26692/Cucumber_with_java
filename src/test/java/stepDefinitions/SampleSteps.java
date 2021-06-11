@@ -144,6 +144,14 @@ public class SampleSteps {
             field.sendKeys(e.getValue());
         }
     }
+    /* Code for iterating Datatable with multiple columns, where column name is key and everything else are values
+    |key1|key2|key3|
+    |value|value|value|
+    ...
+    for(Map<String,String>map : DataTable arg1.asMaps(String.class,String.class)){
+        String value = map.get("key name");
+    }
+     */
 }
 
 
