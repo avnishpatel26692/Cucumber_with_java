@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -111,6 +112,33 @@ public class SampleSteps {
         Assert.assertTrue(newMessage.contains(arg1));
         alert.accept();
         Assert.assertFalse(driver.findElement(By.id("ch1_error")).isDisplayed());
+    }
+
+    @When("^user inputs details$")
+    public void user_inputs_details(Map<String, String> args1) throws Throwable {
+        for (Map.Entry<String, String> textBox : args1.entrySet()) {
+            String key = textBox.getKey();
+            String value = textBox.getValue();
+            WebElement nextTextBox = driver.findElement(By.id(key));
+            nextTextBox.click();
+            nextTextBox.sendKeys(value);
+        }
+    }
+
+    @Given("^i have the following order$")
+    public void i_have_the_following_order(DataTable args1) throws Throwable {
+        for (Map <String, String> map : args1.asMaps(String.class, String.class)) {
+            System.out.println("=================================");
+            String vegetableName = map.get("vegetable"); //cucumber
+            String quantity = map.get("quantity"); //4
+            String cost = map.get("cost"); //10
+            String availability = map.get("availability"); //yes
+            System.out.println("Vegetable : " + vegetableName);
+            System.out.println("Quantity : " + quantity);
+            System.out.println("Cost : " + cost);
+            System.out.println("Availability : " + availability);
+            System.out.println("=================================");
+        }
     }
 
 }

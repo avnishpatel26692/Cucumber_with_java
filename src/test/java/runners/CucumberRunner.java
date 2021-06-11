@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Sample3.feature",
+        features = "src/test/resources/features/SampleStepsPO.feature",
         plugin = {"pretty", "html:cucumber-report/html-report",
                 "junit:cucumber-report/junit-report.xml",
                 "json:cucumber-report/json-report.json"},
@@ -15,10 +15,11 @@ import org.junit.runner.RunWith;
         //tags = {"@Feature1"},
         //tags = {"@scenario1", "@scenario2"},
         //tags = {"@Feature2", "@scenario1"},
-        tags = {"@Feature2"},
+        //tags = {"@Feature2"},
         //tags = {"@NotWorking"},
+        //tags = {"@Scenario1, @Scenario2"},
+        //tags = {"@Scenario3"},
         dryRun = false,
-        //dryRun = true,
         glue = {"stepDefinitions"}
 )
 public class CucumberRunner {

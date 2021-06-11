@@ -1,9 +1,12 @@
 @Feature1
-Feature: This is afeature to test Age Page functionality
+Feature: This is a feature to test Age Page functionality
+
+  Background:
+    #Runs for all scenarios in the beginning
+    When user navigates to Age Page
 
   @scenario1
   Scenario: Check Age page functionality for Adult
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 40
     And User clicks on submit button
@@ -11,7 +14,6 @@ Feature: This is afeature to test Age Page functionality
 
   @scenario2 @Regression
   Scenario: Check Age page functionality for Kid
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 5
     And User clicks on submit button
@@ -19,7 +21,6 @@ Feature: This is afeature to test Age Page functionality
 
   @scenario3 @Regression
   Scenario: Check Age page functionality for Kid
-    When user navigates to Age Page
     And User enter name "ABC"
     And User enter age 16
     And User clicks on submit button

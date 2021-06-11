@@ -11,6 +11,7 @@ Feature: Testing error cases and correct number case
       | dad    | Please enter a number          |
       | 101    | Number is too big              |
       | 45     | Number is too small            |
+
   @Scenario2
   Scenario: Testing correct numbers
     Given I am on number page
