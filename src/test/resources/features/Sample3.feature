@@ -8,8 +8,18 @@ Feature: This is a feature to test Age Page functionality
     And User enter age <age>
     And User clicks on submit button
     Then User see message "<message>"
+    @Working
     Examples:
     |name  | age |    message                        |
     | ABC  | 40  |  Hello, ABC, you are an adult     |
     | ABC  |  5  |  Hello, ABC, you are a kid        |
+
+    @Working2
+    Examples:
+    |name  | age |    message                        |
     | ABC  |  16 |   Hello, ABC, you are a teenager  |
+
+    @NotWorking
+    Examples:
+      |name  | age |    message                        |
+      | ABC  |  16 |   Hello, ABC, you are an adult    |
