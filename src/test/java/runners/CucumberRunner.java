@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:cucumber-report/html-report",
                 "junit:cucumber-report/junit-report.xml",
                 "json:cucumber-report/json-report.json"},
-        //tags = {"@Scenario1"},
+        tags = {"@Scenario3"},
          dryRun = false,
         glue = {"stepDefinitions"}
 )
