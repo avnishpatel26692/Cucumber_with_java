@@ -6,14 +6,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Task1.feature",
+        features = "src/test/resources/features/Task2.feature",
         plugin = {"pretty", "html:cucumber-report/html-report",
                 "junit:cucumber-report/junit-report.xml",
                 "json:cucumber-report/json-report.json"},
-        tags = {"@Scenario1, @Scenario2"},  // ~@Regression   (ne zapustit vsjo, chto s tegom @Regression.) Neskoljko tegov mozhno pisatj cherez ","
+//        tags = {"@regression"},
         dryRun = false,
         glue = {"stepDefinitions"}
 )
 public class CucumberRunner {
-//
+
 }
