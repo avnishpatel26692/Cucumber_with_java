@@ -1,6 +1,9 @@
 @Feature1
 Feature: This is feature to test Age page func.
 
+  Background:
+    When user navigates to Age Page
+
   @scenario1
   Scenario: Check Age page functionality for Adult
     When user navigates to Age Page

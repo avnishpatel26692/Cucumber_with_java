@@ -7,10 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en_scouse.An;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -110,7 +107,10 @@ public class SampleSteps {
         String actualMessage = alert.getText();
         Assert.assertEquals(arg1, actualMessage);
     }
-}
+    ///////////////////////////// Task 2 /////////////////////////////
+
+    }
+
 
 
 
