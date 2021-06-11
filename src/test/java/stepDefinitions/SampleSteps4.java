@@ -121,7 +121,7 @@ public class SampleSteps4 {
 
     @When("^click on edit button$")
     public void click_on_edit_button1() throws Throwable {
-        WebElement editBtn = driver.findElement(By.className("fa-pencil"));
+        WebElement editBtn = driver.findElement(By.xpath("//span[@onclick='openModalForEditPerson(3)']"));
         editBtn.click();
     }
 
