@@ -1,5 +1,5 @@
 package stepDefinitions;
-import cucumber.api.DataTable;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,13 +15,16 @@ import java.util.Map;
 
 public class SampleSteps4 {
     private WebDriver driver;
+
     public SampleSteps4() {
         this.driver = Hooks.driver;
     }
-    @Given("^user navigates to action page$")
+
+    @Given("^user navigates to Age Page$")
     public void user_navigates_to_action_page() throws Throwable {
-        driver.get("https://kristinek.github.io/site/examples/actions");
+        driver.get("https://kristinek.github.io/site/examples/age");
     }
+
     @When("^user clicks on checkboxes$")
     public void user_clicks_on_checkboxes(List<String> arg1) throws Throwable {
         for(String checkBoxValue : arg1)
@@ -31,11 +34,13 @@ public class SampleSteps4 {
             checkbox.click();
         }
     }
+
     @When("^user clicked on result checkbox button$")
     public void user_clicked_on_result_checkbox_button() throws Throwable {
         WebElement submitBtn = driver.findElement(By.id("result_button_checkbox"));
         submitBtn.click();
     }
+
     @Then("^message should be displayed \"([^\"]*)\"$")
     public void message_should_be_displayed(String arg1) throws Throwable {
         WebElement msg = driver.findElement(By.id("result_checkbox"));
@@ -55,23 +60,7 @@ public class SampleSteps4 {
         }
 
     }
-    @Given("^I have the following order$")
-    public void i_have_the_following_order(DataTable arg1) throws Throwable {
-        for(Map<String, String> map : arg1.asMaps(String.class, String.class))
-        {
-            String vegetableName =  map.get("vegetable"); //cucumber
-            String quantity = map.get("quantity"); // 4
-            String cost = map.get("cost"); //10
-            String availability = map.get("Availability"); // yes
-            System.out.println("========================");
-            System.out.println("Vegetable: "  + vegetableName);
-            System.out.println("Quantity: "  + quantity);
-            System.out.println("Cost: "  + cost);
-            System.out.println("Availability: "  + availability);
-            System.out.println("========================");
-        }
-    }
-}
 
+}
 
 

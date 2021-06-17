@@ -1,4 +1,6 @@
 package stepDefinitions;
+
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -22,36 +24,109 @@ public class SampleSteps {
         this.driver = Hooks.driver;
     }
 
+    @Given("^I am on the home page$")
+    public void iAmOnTheHomePage() throws Throwable {
+        driver.get("https://kristinek.github.io/site/examples/age.html");
+    }
 
-@Given("^user navigates to Age Page$")
-public void user_navigates_to_Age_Page() throws Throwable {
-    driver.get("https://kristinek.github.io/site/examples/age.html");
-}
+    @Then("^I should see home page header$")
+    public void iShouldSeeHomePageHeader() throws Throwable {
+        assertEquals("This is a home page",
+                driver.findElement(By.cssSelector("h1")).getText());
+    }
 
-    @Then("^user enter name \"([^\"]*)\"$")
+    @And("^I should see home page description$")
+    public void iShouldSeeHomePageDescription() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                driver.findElement(By.cssSelector("p")).getText());
+    }
+
+    @And("^I should see menu$")
+    public void iShouldSeeMenu() throws Throwable {
+        assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
+    }
+
+
+//    @When("^user navigates to Age Page$")
+//    public void user_navigates_to_Age_Page() throws Throwable {
+//        driver.get("https://kristinek.github.io/site/examples/age.html");
+//    }
+
+    @When("^User enter name \"([^\"]*)\"$")
     public void user_enter_name(String arg1) throws Throwable {
         WebElement nameTextbox = driver.findElement(By.id("name"));
         nameTextbox.clear();
         nameTextbox.sendKeys(arg1);
     }
 
-    @And("^user enter age \"([^\"]*)\"$")
+    @When("^User enter age (\\d+)$")
     public void user_enter_age(int arg1) throws Throwable {
         WebElement ageText = driver.findElement(By.name("age"));
         ageText.sendKeys("" + arg1);
     }
 
-    @And("^User clicks on submit button$")
-    public void user_clicks_on_submit_button() throws Throwable {
-        WebElement submitBtn = driver.findElement(By.xpath("//button[text()='Submit']"));
+    @When("^User clicks on submit button$")
+    public void user_click_on_submit_button() throws Throwable {
+        WebElement submitBtn = driver.findElement(By.id("submit"));
         submitBtn.click();
     }
 
+    //
     @Then("^User see message \"([^\"]*)\"$")
     public void user_see_message(String arg1) throws Throwable {
         WebElement msg = driver.findElement(By.id("message"));
-        String actualMessage = msg.getText();
-        Assert.assertEquals(arg1, actualMessage);
+        String atcualMessage = msg.getText();
+        Assert.assertEquals(arg1, atcualMessage);
     }
+
+
+    @Given("^I am on number page$")
+    public void IamOnNumberPage() throws Throwable {
+        driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
+    }
+    @When("^I enter number: \"([^\"]*)\"$")
+    public void I_enter_number(String arg1) throws Throwable {
+        WebElement numberTextbox = driver.findElement(By.id("numb"));
+        numberTextbox.clear();
+        numberTextbox.sendKeys(arg1);
+    }
+
+    @When("^I click submit number$")
+    public void user_clicks_on_submit_button() throws Throwable {
+        WebElement submitBtn = driver.findElement(By.id("submit"));
+        submitBtn.click();
+    }
+
+    @Then("^I see a message: \"([^\"]*)\"$")
+    public void I_see_a_message(String arg1) throws Throwable {
+        WebElement msg = driver.findElement(By.id("ch1_error"));
+        String atcualMessage = msg.getText();
+        Assert.assertEquals(arg1, atcualMessage);
+    }
+    @Then("^I see a new message: \"([^\"]*)\"$")
+    public void I_see_a_new_message(String arg1) throws Throwable {
+        Alert alert = driver.switchTo().alert();
+        String alertMsg = driver.switchTo().alert().getText();
+
+        Assert.assertEquals(arg1, alertMsg);
+    }
+
+    @Given("^I have the following order$")
+    public void i_have_the_following_order(DataTable arg1) throws Throwable {
+        for (Map<String, String> map : arg1.asMaps(String.class, String.class)) {
+            String vegetableName = map.get("vegetable"); //cucumber
+            String quantity = map.get("quantity"); // 4
+            String cost = map.get("cost"); //10
+            String availability = map.get("Availability"); // yes
+            System.out.println("========================");
+            System.out.println("Vegetable: " + vegetableName);
+            System.out.println("Quantity: " + quantity);
+            System.out.println("Cost: " + cost);
+            System.out.println("Availability: " + availability);
+            System.out.println("========================");
+        }
+    }
+
 }
+
 
