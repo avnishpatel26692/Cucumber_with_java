@@ -47,6 +47,43 @@ public class SampleSteps {
     public void iShouldSeeMenu() throws Throwable {
         assertTrue(driver.findElement(By.className("w3-navbar")).isDisplayed());
     }
+
+//    @Given("^I am on the home page DEMO$")
+//    public void iAmOnTheHomePageDEMO() throws Throwable {
+//        driver.get("http://www.demoshop24.com/index.php?route=common/home");
+//
+//    }
+//
+//    @When("^I click on 'My Account' button on top right side$")
+//    public void iClickOnMyAccountButtonOnTopRightSide() throws Throwable {
+//        WebElement ButOnRightSide = driver.findElement(By.className("dropdown open"));
+//        ButOnRightSide.click();
+//
+//    }
+
+//    @And("^In dropdown I click on 'Register' button$")
+//    public void inDropdownIClickOnRegisterButton() {
+//
+//
+//    }
+//
+//    @And("^I am fill the registration form$")
+//    public void iAmFillTheRegistrationForm() {
+//    }
+//
+//    @And("^I click on 'Continue' button$")
+//    public void iClickOnContinueButton() {
+//
+//    }
+//
+//    @And("^I click on next'Continue' button$")
+//    public void iClickOnNextContinueButton() {
+//
+//    }
+//
+//    @Then("^On the left side I see 'My Account' block, 'My Orders' block and below 'My Account' is 'Edit your account information'$")
+//    public void onTheLeftSideISeeMyAccountBlockMyOrdersBlockAndBelowMyAccountIsEditYourAccountInformation() {
+//    }
 }
 
 

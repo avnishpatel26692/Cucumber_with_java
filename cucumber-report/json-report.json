@@ -1,0 +1,72 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 6,
+        "name": "Simple scenario",
+        "description": "",
+        "id": "introduction-to-cucumber-part-1;simple-scenario",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "I am on the home page",
+            "match": {
+              "location": "SampleSteps.iAmOnTheHomePage()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "I should see home page header",
+            "match": {
+              "location": "SampleSteps.iShouldSeeHomePageHeader()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "I should see home page description",
+            "match": {
+              "location": "SampleSteps.iShouldSeeHomePageDescription()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I should see menu",
+            "match": {
+              "location": "SampleSteps.iShouldSeeMenu()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 5,
+            "name": "@Sample1"
+          }
+        ]
+      }
+    ],
+    "name": "Introduction to cucumber part 1",
+    "description": "As a test engineer\r\nI want to be able to write and execute a simple scenario",
+    "id": "introduction-to-cucumber-part-1",
+    "keyword": "Feature",
+    "uri": "src/test/resources/features/Sample1.feature"
+  }
+]
